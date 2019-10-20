@@ -1,3 +1,4 @@
+# Numerical Differentiation 
 from matplotlib import pyplot as plt
 from math import sin, cos, pi
 from numpy import gradient, linspace
