@@ -1,3 +1,4 @@
+# Numerical Integration
 from matplotlib import pyplot as plt
 from math import sin, cos, pi, exp, log
 from scipy.integrate import simps, trapz, cumtrapz
