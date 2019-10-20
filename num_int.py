@@ -1,30 +1,27 @@
-# Numerical Integration
+# Import statements
 from matplotlib import pyplot as plt
-from math import sin, cos, pi, exp, log
-from scipy.integrate import simps, trapz, cumtrapz
-from numpy import linspace
+from scipy.integrate import trapz, simps, cumtrapz
+from math import sin, cos, pi, log, exp
 from random import random
+from numpy import linspace
 
-# Function for true integral
-def integrate(lim_a, lim_b):
-	func = lambda x: (1/2)*exp(2*x)
-	return func(lim_b) - func(lim_a)
-
-
-t = linspace(0.1, 2*pi, 1000)
+t = linspace(0.001, 2*pi, 1000)
 y = []
-y_area = 0
 
+def integrate(lim_a, lim_b):
+	func = lambda x: x * log(x) - x
+	return func(lim_b) - func(lim_a)
+	
+	
 for x in t:
-	var = exp(2*x)
+	var = 3*pow(x, 3) + 100*(random() * random())
 	y.append(var)
-
-area_traps = trapz(y, t)
+	
+area_trapz = trapz(y, t)
 area_simps = simps(y, t)
+print("Area trapezoidal rule: {}".format(area_trapz))
+print("Area Simpson's Rule: {}" .format(area_simps))
+# print("Area FTC1: {}".format(integrate(0.001, 2*pi)))
 
-print(area_traps)
-print(area_simps)
-print(integrate(0.1, 2*pi))
 plt.plot(t, y)
-plt.grid()
 plt.show()
