@@ -1,21 +1,24 @@
-import numpy as np
+from numpy import linspace, gradient
 from matplotlib import pyplot as plt
-from math import sin, pi
-t = []
+from math import sin, pi, cos
+
+t = linspace(0, 2*pi, 1000)
 y = []
 
-# Sin function goes from 0-180
-t = np.linspace(0,2*pi, 1000)
-
-
 for x in t:
-	y.append(sin(x))
+	# Input your function here.
+	var = sin(x)
+	y.append(var)
 
-dy = np.gradient(y)
-dx = np.gradient(t)
-dydx =dy/dx
+dy = gradient(y)
+dt = gradient(t)
+dydt = dy/dt
 
-
-plt.plot(t, y)
-plt.plot(t, dydx)
+plt.plot(t,y, label='Function')
+plt.grid()
+plt.plot(t, dydt, label="Derivative")
+plt.xlabel(" t (radians)")
+plt.ylabel(" Sin(t)")
+plt.legend()
 plt.show()
+
